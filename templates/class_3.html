@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习C语言编程 - while 循环</title>
+    <link rel="stylesheet" href="../css/class.css">
+    <script src="../js/class.js"></script>
+</head>
+<body>
+    <div class="console-container">
+        <div class="console-header">
+            <h1 class="title">while 循环</h1>
+        </div>
+        <div class="console-content">
+            <div class="topic-header">
+                <div class="icon"></div>
+                <div class="topic-name">while 循环简介</div>
+            </div>
+            <div class="topic-details">
+                <p>只要给定的条件为真，C 语言中的 while 循环语句会重复执行一个目标语句。</p>
+            </div>
+            <div class="code-example">
+                <h2>示例：while 循环</h2>
+                <pre><code>
+#include &lt;stdio.h&gt;
+
+int main ()
+{
+    int a = 10;
+
+    while( a < 20 )
+    {
+        printf("a 的值： %d\n", a);
+        a++;
+    }
+
+    return 0;
+}
+                </code></pre>
+                <p>上面的代码会打印从 10 到 19 的 a 的值。</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.level_1 {
+    width: 100%;
+    height: 100vh; 
+    background-image: url('../pictures/class_1.jpg'); 
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
+    position: relative;
+}
+
+#character {
+    position: absolute;
+    top: 20px; /* Adjust this value to move the character up or down */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+}
+
+a {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Background color for better visibility */
+    color: #fff; /* Text color */
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: 'Press Start 2P', cursive; /* 8-bit style font */
+    font-size: 1.2em;
+    text-align: center;
+}
+
+a:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}

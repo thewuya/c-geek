@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习C语言编程</title>
+    <link rel="stylesheet" href="../css/class.css">
+    <script src="../js/class.js"></script>
+</head>
+<body>
+
+    <div class="console-container">
+       
+        <div class="console-header">
+            <h1 class="title">学习C语言编程</h1>
+        </div>
+
+   
+        <div class="console-content">
+           
+            <div class="topic-header">
+                <div class="icon">
+                    
+                </div>
+                <div class="topic-name">C语言简介</div>
+            </div>
+
+        
+            <div class="topic-details">
+                <p>C是一种功能强大的通用编程语言。它速度快、可移植，且适用于所有平台。</p>
+                <p>本教程将带你从环境搭建到编写你的第一个C程序，逐步了解C编程的基础知识。</p>
+            </div>
+
+            
+            <div class="code-example">
+                <h2>示例：Hello World</h2>
+                <pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!");
+    return 0;
+}
+                </code></pre>
+                <p>这个简单的程序会在控制台输出"Hello, World!"，它通常是学习新编程语言时编写的第一个程序。</p>
+            </div>
+
+            
+            <div class="quiz-section">
+                <h2>快速测验</h2>
+                <p>在C语言中，正确引入标准输入输出库的语法是什么？</p>
+                <form onsubmit="checkAnswer(event)">
+                    <input type="radio" id="option1" name="quiz" value="option1">
+                    <label for="option1">#include &lt;stdio&gt;</label><br>
+                    <input type="radio" id="option2" name="quiz" value="option2">
+                    <label for="option2">#include stdio.h</label><br>
+                    <input type="radio" id="option3" name="quiz" value="option3">
+                    <label for="option3">#include &lt;stdio.h&gt;</label><br>
+                    <button type="submit" class="button_pixel_effect">提交答案</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

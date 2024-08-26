@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>pixelart</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../css/menu.css">
+    </head>
+
+    <body >
+        <div class="menu">
+            <ul>
+                <li><a href="../index.htm" class="btn-retro">介绍</a></li>
+                <li><a href="log_in.html" class="btn-retro">登录</a></li>
+                <li><button id="music_button" onclick="play_music()" class="btn-retro">音乐</button></li>
+            </ul>
+        </div>
+    
+        <audio id="music-player"autoplay>
+            <source src="audio/index.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        
+        <script src="js/index.js" defer></script>
+    </body>
+</html>
