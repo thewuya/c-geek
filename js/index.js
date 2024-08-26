@@ -325,7 +325,7 @@ function logInConvenient () {
 function handleMessageForm (event) {
   event.preventDefault()
   if (!db) {
-    alert('再来一次');
+    alert('try again');
     return;
   }
   const receiver = document.getElementById('friendList').value;
@@ -342,11 +342,13 @@ function handleMessageForm (event) {
 
   const addRequest = messageStore.add(messages);
   addRequest.onsuccess = function() {
-    alert("发消息了");
+    alert("message sent");
+    location.reload();
   }
 
   addRequest.onerror = function() {
-    alert("没发");
+    alert("message");
+    
   }
 }
 
