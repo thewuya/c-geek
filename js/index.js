@@ -343,7 +343,7 @@ function handleMessageForm (event) {
   const addRequest = messageStore.add(messages);
   addRequest.onsuccess = function() {
     alert("message sent");
-    location.reload();
+    document.getElementById('message').value = '';
   }
 
   addRequest.onerror = function() {
