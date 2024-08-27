@@ -5,10 +5,11 @@ request.onupgradeneeded = function(event) {
   db = event.target.result;
   const objectStore = db.createObjectStore('users', {keyPath: 'username'});
   objectStore.createIndex('password', 'password', { unique: false});
-  objectStore.createIndex('gender', 'gender', { unique:false });
   objectStore.createIndex('experience', 'experience', { unique:false });
   objectStore.createIndex('level', 'level', { unique:false });
   objectStore.createIndex('lessonCompleted', 'lessonCompleted', { unique:false });
+  objectStore.createIndex('levelFollower', 'levelFollower', { unique:false });
+  objectStore.createIndex('quizzes', 'quizzes', { unique:false });
 
   const friendsStore = db.createObjectStore('friends', { keyPath: ['username', 'friendUsername']})
   friendsStore.createIndex('username', 'username', { unique: false });
@@ -35,10 +36,51 @@ request.onsuccess = function(event) {
     showRanking();
   }
 
-
+  if(window.location.pathname.endsWith('level.html')) {
+    levelChecker();
+  }
   if(window.location.pathname.endsWith('message.html')) {
     loadMessage();
   }
+
+
+  if(window.location.pathname.endsWith('quiz_1.html')) {
+    const questions = [
+      { 
+        question: "在C语言中,正确引入标准输入输出库的语法是什么？",
+        options: ["stdio.h", "sstdii.h", "#sstdio.h", "Mdsadsad"],
+        answer: "stdio.h"
+      },
+      { 
+        question: "¿Qué se come en Nicaragua?",
+        options: ["Arroz", "Papa", "Maíz", "Frijoles"],
+        answer: "Arroz"
+      },
+      { 
+        question: "¿Qué se bebe en Nicaragua?",
+        options: ["Arroz", "Papa", "Maíz", "Agua"],
+        answer: "Agua"
+      }
+    ];
+    quizLoader('quiz_1', questions);
+  }
+
+  if(window.location.pathname.endsWith('quiz_2.html')) {
+    quizLoader('quiz_2');
+  }
+
+  if(window.location.pathname.endsWith('quiz_3.html')) {
+    quizLoader('quiz_3');
+  }
+
+  if(window.location.pathname.endsWith('quiz_4.html')) {
+    quizLoader('quiz_4');
+  }
+
+  if(window.location.pathname.endsWith('quiz_5.html')) {
+    quizLoader('quiz_5');
+  }
+
   const signInForm = document.getElementById('signInForm');
   if (signInForm){
     signInForm.addEventListener('submit', handleSignInForm);
@@ -66,9 +108,8 @@ function handleSignInForm(event) {
     console.error('再来依次')
     return
   }
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-  const gender = document.getElementById('gender').value;
+  const username = document.getElementById('s_username').value;
+  const password = document.getElementById('s_password').value;
 
   const transaction = db.transaction(['users']);
   const objectStore = transaction.objectStore('users');
@@ -81,13 +122,23 @@ function handleSignInForm(event) {
       const transaction = db.transaction(['users'], 'readwrite');
       const objectStore = transaction.objectStore('users');
 
+      const quizzes = {};
+      for (let i = 0; i < 10; i++) {
+        quizzes[`quiz_${i}`] = false;
+      }
+
+      const levelFollower = {};
+      for (let i = 0; i < 10; i++) {
+        levelFollower[`level_${i}`] = false;
+      }
+
       const user = {
         username: username,
         password: password,
-        gender: gender,
         experience: 0,
         level: 1,
-        lessonCompleted: 0
+        lessonCompleted: 0,
+        quizzes: quizzes
       };
 
       const addRequest = objectStore.add(user);
@@ -412,6 +463,79 @@ function loadMessage() {
   };
 
 }
+
+function quizLoader(quiz_name, questions) {
+  if (!db) {
+    console.error('Por favor, inténtalo de nuevo.');
+    return;
+  }
+
+  
+
+  const quizContainer = document.getElementById('quizContainer');
+  const submitButton = document.getElementById('submitQuiz');
+
+  function displayQuestions() {
+    quizContainer.innerHTML = ''; 
+
+    questions.forEach((q, index) => {
+      const questionDiv = document.createElement('div');
+      questionDiv.innerHTML = `<p>${q.question}</p>`;
+      q.options.forEach(option => {
+        questionDiv.innerHTML += `<input type="radio" name="q${index}" value="${option}"> ${option}<br>`;
+      });
+      quizContainer.appendChild(questionDiv);
+    });
+  }
+
+  submitButton.onclick = function() {
+    let score = 0;
+    let totalQuestions = questions.length;
+
+    questions.forEach((q, index) => {
+      const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+      if (selectedOption && selectedOption.value === q.answer) {
+        score++;
+      }
+    });
+
+    const username = sessionStorage.getItem('username');
+
+    const transaction = db.transaction(['users'], 'readwrite');
+    const objectStore = transaction.objectStore('users');
+    const request = objectStore.get(username);
+
+    request.onsuccess = function(event) {
+      const user = request.result;
+
+      if (!user.quizzes) user.quizzes = {}; 
+
+      if (user.quizzes[quiz_name] === false) {
+        user.experience += score * 10;
+        user.quizzes[quiz_name] = true;
+        const updateRequest = objectStore.put(user);
+
+        updateRequest.onsuccess = function() {
+          alert(`¡Has respondido correctamente a ${score} de ${totalQuestions} preguntas! Has ganado ${score * 10} puntos de experiencia.`);
+        };
+
+        updateRequest.onerror = function() {
+          console.error('Actualización fallida: ', updateRequest.error);
+        };
+      } else {
+        alert('Ya has completado este cuestionario.');
+      }
+    };
+
+    request.onerror = function() {
+      console.error('Carga de usuario fallida: ', request.error);
+    };
+  };
+
+  displayQuestions();
+}
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
   if (window.location.pathname.endsWith("log_in.html")) {
