@@ -90,6 +90,9 @@ function quizLoader(quiz_name, questions) {
     const submitButton = document.getElementById('submitQuiz');
   
     function displayQuestions() {
+      if (!checkUserLoggedIn()) {
+        return; // If not logged in, stop execution
+      }
       quizContainer.innerHTML = ''; 
   
       questions.forEach((q, index) => {
@@ -175,4 +178,12 @@ function quizLoader(quiz_name, questions) {
     displayQuestions();
   }
 
-
+  function checkUserLoggedIn() {
+    const username = sessionStorage.getItem('username');
+    if (!username) {
+      alert('请先登录！'); // Prompt user to log in
+      window.location.href = 'login.html'; // Redirect to login page
+      return false;
+    }
+    return true;
+  }

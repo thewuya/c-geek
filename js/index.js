@@ -28,18 +28,35 @@ request.onsuccess = function(event) {
     loadInformation();
   }
 
+  const logoutButton = document.getElementById('logoutButton');
+  if (logoutButton) {
+    logoutButton.addEventListener('click', handleLogout);
+  }
+
   if(window.location.pathname.endsWith('profile.html')) {
+    if (!checkUserLoggedIn()) {
+      return;
+    }
     loadProfile();
   }
 
   if(window.location.pathname.endsWith('ranking.html')) {
+    if (!checkUserLoggedIn()) {
+      return;
+    }
     showRanking();
   }
 
   if(window.location.pathname.endsWith('level.html')) {
+    if (!checkUserLoggedIn()) {
+      return;
+    }
     levelChecker();
   }
   if(window.location.pathname.endsWith('message.html')) {
+    if (!checkUserLoggedIn()) {
+      return;
+    }
     loadMessage();
   }
 
@@ -50,6 +67,7 @@ request.onsuccess = function(event) {
   
   const logInForm = document.getElementById('logInForm');
   if (logInForm){
+    
     logInForm.addEventListener('submit', handleLogInform)
   }
 
@@ -432,6 +450,20 @@ function loadMessage() {
 
 }
 
+function handleLogout() {
+  sessionStorage.clear();
+  window.location.href = 'login.html'; 
+}
+
+function checkUserLoggedIn() {
+  const username = sessionStorage.getItem('username');
+  if (!username) {
+    alert('请先登录！'); 
+    window.location.href = 'log_in.html'; 
+    return false;
+  }
+  return true;
+}
 
 
 

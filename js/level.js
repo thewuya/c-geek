@@ -3,7 +3,9 @@ const request = indexedDB.open('UserDatabase', 1);
 
 request.onsuccess = function(event) {
     db = event.target.result;
-
+    if (!checkUserLoggedIn()) {
+        return;
+      }
     setupLevelButtons();
 };
 
@@ -71,3 +73,13 @@ function unlockNextLevel(username, completedLevel) {
         console.log('Failed to retrieve user data:', event);
     };
 }
+
+function checkUserLoggedIn() {
+    const username = sessionStorage.getItem('username');
+    if (!username) {
+      alert('请先登录！'); 
+      window.location.href = 'log_in.html';
+      return false;
+    }
+    return true;
+  }
