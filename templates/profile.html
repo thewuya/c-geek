@@ -1,21 +1,35 @@
 <!DOCTYPE html>
-
-<html lan="zh">
-    <head>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <p>用户名:<span id="username"></span></p>
-        <p>密码:<span id="password"></span></p>
-        <p>经验:<span id="experience"></span></p>
-        <p>level:<span id="level"></span></p>
-        <p>完成:<span id="lessonCompleted"></span>/100</p>
-
-        <h2>朋友</h2>
-        <ul id="friends">
-
-        </ul>
-
-        <script src="../js/index.js"></script>
-    </body>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/profile.css"> <!-- Link to your custom CSS -->
+</head>
+<body>
+    <div class="container">
+        <header class="text-center mb-4">
+            <img src="../pictures/man.png" alt="Profile Picture" class="profile-img">
+            <h1 class="text-light">角色档案</h1>
+        </header>
+        <div class="profile-info bg-dark text-light p-4 rounded">
+            <p>用户名: <span id="username"></span></p>
+            <p>密码: <span id="password"></span></p>
+            <p>经验: <span id="experience"></span> XP</p>
+            <p>等级: <span id="level"></span></p>
+            <p>完成: <span id="lessonCompleted"></span>/100</p>
+        </div>
+        <section class="friends mt-4">
+            <h2 class="text-light">朋友</h2>
+            <ul id="friends" class="list-group">
+                <!-- Friends will be dynamically loaded here -->
+            </ul>
+        </section>
+    </div>
+    <script src="../js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
