@@ -9,31 +9,36 @@ request.onsuccess = function(event) {
 
 function setupLevelButtons() {
     const buttons = document.querySelectorAll('button');
+    const transaction = db.transaction(['users'], 'readonly');
+    const objectStore = transaction.objectStore('users');
+    const userRequest = objectStore.get(sessionStorage.getItem('username'));
 
-    buttons.forEach(button => {
-        button.addEventListener('click', function(event) {
-            event.preventDefault(); 
+    userRequest.onsuccess = function(event) {
+        const user = userRequest.result;
+        
+        buttons.forEach(button => {
+            const levelId = button.id;
+            if (user.levelFollower[levelId]) {
+                button.style.backgroundColor = '#4CAF50'; // Green for unlocked
+            } else {
+                button.style.backgroundColor = 'red'; // Red for locked
+            }
 
-            const levelId = this.id;
-            const transaction = db.transaction(['users'], 'readonly');
-            const objectStore = transaction.objectStore('users');
-            const userRequest = objectStore.get(sessionStorage.getItem('username'));
+            button.addEventListener('click', function(event) {
+                event.preventDefault(); 
 
-            userRequest.onsuccess = function(event) {
-                const user = userRequest.result;
                 if (user.levelFollower[levelId]) {
-
                     window.location.href = button.querySelector('a').href;
                 } else {
                     alert('This level is locked. Complete the previous levels to unlock it.');
                 }
-            };
-
-            userRequest.onerror = function(event) {
-                console.log('Failed to retrieve user data:', event);
-            };
+            });
         });
-    });
+    };
+
+    userRequest.onerror = function(event) {
+        console.log('Failed to retrieve user data:', event);
+    };
 }
 
 function unlockNextLevel(username, completedLevel) {
@@ -54,6 +59,7 @@ function unlockNextLevel(username, completedLevel) {
 
         updateRequest.onsuccess = function(event) {
             console.log('User data updated successfully.');
+            setupLevelButtons(); // Refresh button colors after update
         };
 
         updateRequest.onerror = function(event) {
