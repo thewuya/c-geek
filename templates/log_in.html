@@ -1,38 +1,41 @@
 <!DOCTYPE html>
 <html lang="zh">
-  <head>
+<head>
     <title>log_in</title>
     <meta charset="UTF-8">
-  </head>
-  <link rel="stylesheet" href="../css/log_in.css">
-  <body>
+    <link rel="stylesheet" href="../css/log_in.css">
+</head>
+<body>
     <div class="wrapper">
-      <div class="card-switch">
-          <label class="switch">
-             <input type="checkbox" class="toggle">
-             <span class="slider"></span>
-             <span class="card-side"></span>
-             <div class="flip-card__inner">
-                <div class="flip-card__front">
-                   <div class="title">log_in</div>
-                   <form id="logInForm" class="flip-card__form" action="">
-                      <input id="username" class="flip-card__input" placeholder="Name" type="name">
-                      <input id="password" class="flip-card__input" name="password" placeholder="Password" type="password">
-                      <button class="flip-card__btn">Let`s go!</button>
-                   </form>
+        <div class="card-switch">
+            <label class="switch">
+                <input type="checkbox" class="toggle" id="toggleFlip">
+                <span class="slider"></span>
+                <span class="card-side"></span>
+                <div class="flip-card__inner">
+                    <div class="flip-card__front">
+                        <div class="title">log_in</div>
+                        <form id="logInForm" class="flip-card__form" action="">
+                            <input id="username" class="flip-card__input" placeholder="Name" type="name">
+                            <input id="password" class="flip-card__input" name="password" placeholder="Password" type="password">
+                            <button class="flip-card__btn">Let`s go!</button>
+                        </form>
+                    </div>
+                    <div class="flip-card__back">
+                        <div class="title">sign_in</div>
+                        <form id="signInForm" class="flip-card__form" action="">
+                            <input id="s_username" class="flip-card__input" placeholder="Name" type="name">
+                            <input id="s_password" class="flip-card__input" name="password" placeholder="Password" type="password">
+                            <button class="flip-card__btn">Confirm!</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="flip-card__back">
-                   <div class="title">sign_in</div>
-                   <form id="signInForm" class="flip-card__form" action="">
-                      <input id="s_username" class="flip-card__input" placeholder="Name" type="name">
-                      <input id="s_password" class="flip-card__input" name="password" placeholder="Password" type="password">
-                      <button class="flip-card__btn">Confirm!</button>
-                   </form>
-                </div>
-             </div>
-          </label>
-      </div>   
- </div>
+            </label>
+        </div> 
+   
+        
+    </div>
+     
     <script src="../js/index.js"></script>
-  </body>
+</body>
 </html>

@@ -81,6 +81,13 @@ request.onerror = function(event) {
   console.error('开不了IndexedDB', event.target.errorCode);
 };
 
+function toggleFlip() {
+  // Get the checkbox input element
+  const toggle = document.getElementById('toggleFlip');
+  // Toggle the checked state
+  toggle.checked = !toggle.checked;
+}
+
 function handleSignInForm(event) {
   event.preventDefault();
 
@@ -131,9 +138,8 @@ function handleSignInForm(event) {
         console.log('成功了');
         document.getElementById('username').value = username;
         document.getElementById('password').value = password;
+        toggleFlip();
        
-        const flipCardInner = document.querySelector('.flip-card__inner');
-        flipCardInner.classList.remove('flipped');
         
       };
 
@@ -159,6 +165,7 @@ function handleLogInform (event) {
     console.log("再来依次");
     return;
   }
+
 
   const username = document.getElementById('username').value;
   const password = document.getElementById('password').value;

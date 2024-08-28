@@ -61,7 +61,59 @@ request.onsuccess = function(event) {
         }
       
         if(window.location.pathname.endsWith('quiz_2.html')) {
-          quizLoader('quiz_2');
+          const questions_2 = [
+            { 
+              question: "下列哪个是C语言中用于声明浮点数的数据类型？",
+              options: ["int", "char", "float", "bool"],
+              answer: "float"
+            },
+            { 
+              question: "下列哪个是C语言中用于声明一个无符号整数（只能存储非负值）的关键字？",
+              options: ["unsigned", "signed", "void", "enum"],
+              answer: "unsigned"
+            },
+            { 
+              question: "在C语言中，sizeof(char)的结果通常是？",
+              options: ["1", "2", "4", "取决于编译器"],
+              answer: "1"
+            },
+            { 
+              question: "哪个数据类型在C语言中用于表示真值或假值（布尔值）？",
+              options: ["bool", "true/false", "int", "logical"],
+              answer: "int"
+            },
+            { 
+              question: "在C语言中，long int、int和short int类型的变量占用的字节数关系通常是？",
+              options: ["long int < int < short int", "short int < int < long int", "它们占用相同的字节数", "取决于编译器和平台"],
+              answer: "取决于编译器和平台"
+            },
+            { 
+              question: "以下是一个C语言程序片段，用于打印一个整数的值。请填空，并选出正确的填空选项。\n\n#include <stdio.h>\nint main() {\n    _______ num = 100; // 填空处应填写合适的数据类型\n    printf(\"%d\\n\", num);\n    return 0;\n}",
+              options: ["int", "float", "char", "string"],
+              answer: "int"
+            },
+            { 
+              question: "以下能正确地定义整型变量a，b和c并为它们赋初值5的语句是？",
+              options: ["int a = b = c = 5;", "int a, b, c = 5;", "a = 5, b = 5, c = 5;", "int a = 5, b = 5, c = 5;"],
+              answer: "int a = 5, b = 5, c = 5;"
+            },
+            { 
+              question: "下列程序的输出结果是？\n\n# include <stdio.h> \nint main(void)\n{\n int a[10] = {0,1,2,3,4,5,6,7,8,9}, *p = a+3;\n \n printf(\"%d\", p[2]);\n \n return 0;\n}",
+              options: ["3", "4", "5", "非法"],
+              answer: "5"
+            },
+            { 
+              question: "阅读以下C语言程序片段，下列说法正确的是：\n\nint a = 5;\nfloat b = a;",
+              options: ["不会发生任何转换，因为int和float是不同类型。", "a的值会隐式转换为float类型，然后赋值给b。", "b的类型会隐式转换为int类型，以匹配a的类型。", "程序会编译失败，因为int和float类型不兼容。"],
+              answer: "a的值会隐式转换为float类型，然后赋值给b。"
+            },
+            { 
+              question: "阅读以下C语言程序，并选择程序输出的结果。\n\n#include <stdio.h>\n\nint main() {\n    char c = 'A' + 1;\n    printf(\"%c\\n\", c);\n    return 0;\n}",
+              options: ["A", "B", "66", "1"],
+              answer: "B"
+            }
+          ];
+          quizLoader('quiz_2', questions_2);
         }
       
         if(window.location.pathname.endsWith('quiz_3.html')) {
