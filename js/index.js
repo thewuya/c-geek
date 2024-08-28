@@ -452,7 +452,7 @@ function loadMessage() {
 
 function handleLogout() {
   sessionStorage.clear();
-  window.location.href = 'login.html'; 
+  window.location.href = 'log_in.html'; 
 }
 
 function checkUserLoggedIn() {
