@@ -21,7 +21,7 @@
     --transition-main: .175, .685, .32;
     /* Fonts */
     --font-main: "Poppins";
-    background-color: rgb(110, 140, 129);
+    
 }
 
 /* ===========
@@ -44,7 +44,7 @@ html, body {
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
     box-sizing: border-box;
-    background-color: rgb(110, 140, 129);	
+    background-color: #608a81;
 
     
 }
