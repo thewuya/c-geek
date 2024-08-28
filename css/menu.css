@@ -1,42 +1,70 @@
+/* General reset */
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+/* Custom font */
 @font-face {
     font-family: 'pixel-hanzi';
     src: url('../fonts/hzk-pixel-16px.ttf'); 
 }
 
+/* Body styling */
 body {
     font-family: 'pixel-hanzi', sans-serif;
-    cursor: url("../pictures/cursor.png"), auto; 
+    cursor: url("../pictures/cursor.png"), auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
+/* Menu container styling */
 .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 100vh; 
-    background-image: url('../pictures/5.jpg'); 
-    background-size: cover; 
+    height: 100vh;
+    background-image: url('../pictures/5.jpg');
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-
 }
 
+/* List styling */
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Button styling */
+.menu li {
+    margin: 12px; /* Increased margin for spacing */
+}
+
+/* Retro button styling */
 .btn-retro {
-    background: #e08356; 
-    border: 3px solid #c94b28; 
+    display: block;
+    padding: 14px 30px; /* Increased padding for better touch area */
+    text-align: center;
+    font-size: 1.2rem; /* Increased font size */
+    background-color: #e08356;
     color: #fff;
-    font-size: 14px; 
-    padding: 2px 20px; 
-    margin: 8px; 
-    cursor: pointer;
+    border: 3px solid #c94b28;
+    margin: 8px;
     text-transform: uppercase;
-    outline: none;
-    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
     box-shadow: 0px 4px 0px #c94b28;
-    font-family: inherit;
     clip-path: polygon(
         0px calc(100% - 2px),
         2px calc(100% - 2px),
@@ -51,10 +79,13 @@ body {
         2px 2px,
         0px 2px
     );
+    transition: all 0.3s ease;
+    outline: none;
+    font-family: inherit;
 }
 
 .btn-retro:hover {
-    background: #f09767; 
+    background: #f09767;
     box-shadow: 0px 2px 0px #c94b28;
     transform: translateY(2px);
 }
@@ -62,4 +93,20 @@ body {
 .btn-retro:active {
     transform: translateY(3px);
     box-shadow: 0px 1px 0px #c94b28;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .btn-retro {
+        font-size: 1.1rem;
+        padding: 12px 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-retro {
+        font-size: 1.2rem; /* Larger font size for smaller screens */
+        padding: 14px 30px; /* Larger padding for better touch area */
+        margin: 10px; /* Increase margin between buttons */
+    }
 }
