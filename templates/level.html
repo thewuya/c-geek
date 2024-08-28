@@ -5,14 +5,20 @@
         <title>pixelart</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
+            @font-face {
+                font-family: 'pixel-hanzi';
+                src: url('../fonts/hzk-pixel-16px.ttf'); 
+            }
             body {
+                font-family: 'pixel-hanzi', sans-serif;
+                cursor: url("../pictures/cursor.png"), auto; 
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-family: Arial, sans-serif;
+              
                 height: 100vh;
                 background-color: #282828; /* Fallback color */
-                background-image: url('../pictures/5.jpg'); /* Path to your image */
+           
                 background-size: cover; /* Adjusts the image to cover the entire background */
                 background-position: center; /* Centers the image */
                 background-repeat: no-repeat; /* Prevents the image from repeating */
@@ -28,20 +34,36 @@
             }
 
             button {
-                margin: 10px 0;
-                padding: 10px 20px;
-                font-size: 16px;
-                cursor: pointer;
-                background-color: #4CAF50;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                transition: background-color 0.3s, transform 0.3s;
-                position: relative;
+                background: #e08356; /* Retro orange background */
+    border: 3px solid #c94b28; /* Darker orange border */
+    color: #fff; /* White text */
+    font-size: 14px; /* Font size */
+    padding: 2px 20px; /* Padding inside the button */
+    margin: 8px; /* Margin around the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-transform: uppercase; /* Uppercase text */
+    outline: none; /* Remove outline */
+    transition: all 0.3s ease; /* Smooth transition for all changes */
+    box-shadow: 0px 4px 0px #c94b28; /* Shadow with the same color as border */
+    font-family: 'pixel-hanzi', sans-serif; /* Apply custom font to button */
+    clip-path: polygon(
+        0px calc(100% - 2px),
+        2px calc(100% - 2px),
+        2px 100%,
+        calc(100% - 2px) 100%,
+        calc(100% - 2px) calc(100% - 2px),
+        100% calc(100% - 2px),
+        100% 2px,
+        calc(100% - 2px) 2px,
+        calc(100% - 2px) 0px,
+        2px 0px,
+        2px 2px,
+        0px 2px
+    ); 
             }
 
             button:hover {
-                background-color: #45a049;
+                background-color: #d4890f;
                 transform: scale(1.1);
             }
 
@@ -52,13 +74,13 @@
             /* Offset each button with slight horizontal translation to create a non-straight column */
             #level_0 { transform: translateX(0); }
             #level_1 { transform: translateX(10px); }
-            #level_2 { transform: translateX(-15px); }
-            #level_3 { transform: translateX(20px); }
-            #level_4 { transform: translateX(-10px); }
+            #level_2 { transform: translateX(-19px); }
+            #level_3 { transform: translateX(24px); }
+            #level_4 { transform: translateX(-17px); }
             #level_5 { transform: translateX(15px); }
-            #level_6 { transform: translateX(-20px); }
-            #level_7 { transform: translateX(10px); }
-            #level_8 { transform: translateX(-5px); }
+            #level_6 { transform: translateX(-14px); }
+            #level_7 { transform: translateX(16px); }
+            #level_8 { transform: translateX(-40px); }
             #level_9 { transform: translateX(0); }
 
             a {
@@ -70,6 +92,7 @@
     </head>
 
     <body>
+    
         <div class="button-container">
             <button id="level_0" type="button"><a href="quiz_1.html">level_1</a></button>
             <button id="level_1" type="button"><a href="clase_2.html">level_2</a></button>
@@ -81,6 +104,7 @@
             <button id="level_7" type="button"><a href="clase_8.html">level_8</a></button>
             <button id="level_8" type="button"><a href="clase_9.html">level_9</a></button>
             <button id="level_9" type="button"><a href="clase_10.html">level_10</a></button>
+          
         </div>
 
         <script src="../js/level.js" defer></script>
