@@ -5,9 +5,8 @@
 
 /* General Styles */
 body {
-    background: #000; /* Black background for retro feel */
-    color: #fff;
-
+    background: #2e3a23; /* Dark green background for a forest feel */
+    color: #d8e1d3; /* Light greenish-white text for contrast */
     font-family: 'pixel-hanzi', sans-serif;
     cursor: url("../pictures/cursor.png"), auto; 
 }
@@ -16,14 +15,14 @@ body {
 .profile-img {
     width: 150px;
     height: 150px;
-    border: 5px solid #fff; /* White border for profile picture */
+    border: 5px solid #a1b58c; /* Light olive border for profile picture */
     border-radius: 50%; /* Circular profile picture */
 }
 
 /* Profile Information Box */
 .profile-info {
-    background: #333; /* Dark background for profile info */
-    border: 2px solid #555; /* Border to match retro theme */
+    background: #4f5d23; /* Forest green background for profile info */
+    border: 2px solid #6b7b4a; /* Olive border to match forest theme */
     box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Slight shadow for depth */
 }
 
@@ -33,9 +32,9 @@ body {
 }
 
 .list-group-item {
-    background: #222; /* Dark background for list items */
-    border: 1px solid #444; /* Border for retro look */
-    color: #fff; /* White text */
+    background: #3b4c2a; /* Dark green for list items */
+    border: 1px solid #5b6b3a; /* Slightly lighter green border for retro look */
+    color: #d8e1d3; /* Light greenish-white text for readability */
 }
 
 /* Responsive Design */
