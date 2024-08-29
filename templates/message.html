@@ -1,25 +1,33 @@
 <!DOCTYPE html>
-
 <html lang="zh">
-    <head>
-        <meta charset="UTF-8">
-        <title>信封</title>
-    </head>
-    <body>
-        <meta charset="UTF-8">
-        <div id="messageList"></div>
+<head>
+    <meta charset="UTF-8">
+    <title>信封</title>
+    <link rel="stylesheet" href="../css/message.css"> <!-- Link to the external CSS file -->
+    <style>
+        @font-face {
+            font-family: 'pixel-hanzi';
+            src: url('../fonts/hzk-pixel-16px.ttf');
+        }
+    </style>
+</head>
+<body>
+    <div class="book-wrapper">
+        <div class="book-content">
+            <div id="messageList" class="message-list"></div>
 
-        <div>
-            <label for="friendList">Select Friend:</label>
-            <select id="friendList">
-            </select>
+            <div class="friend-select">
+                <label for="friendList">Select Friend:</label>
+                <select id="friendList"></select>
+            </div>
+
+            <form id="sendMessageForm" class="message-form">
+                <input type="text" id="message" placeholder="Message" required>
+                <button type="submit" class="send-button">Send</button>
+            </form>
         </div>
-    
-        <form id="sendMessageForm">
-            <input type="text" id="message" placeholder="Message" required>
-            <button type="submit">Send</button>
-        </form>
+    </div>
 
-        <script src="../js/index.js"></script>
-    </body>
+    <script src="../js/index.js"></script>
+</body>
 </html>
