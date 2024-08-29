@@ -1,8 +1,15 @@
+@font-face {
+  font-family: 'pixel-hanzi';
+  src: url('../fonts/hzk-pixel-16px.ttf'); 
+}
+
 /* From Uiverse.io by andrew-demchenk0 */ 
 body {
+    font-family: 'pixel-hanzi', sans-serif;
+    cursor: url("../pictures/cursor.png"), auto; 
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+
 }
 .wrapper {
     margin-top: 20%;
@@ -169,6 +176,7 @@ body {
   }
   
   .flip-card__input {
+    font-family: 'pixel-hanzi', sans-serif;
     width: 250px;
     height: 40px;
     border-radius: 5px;
@@ -197,6 +205,7 @@ body {
   }
   
   .flip-card__btn {
+    font-family: 'pixel-hanzi', sans-serif;
     margin: 20px 0 20px 0;
     width: 120px;
     height: 40px;
