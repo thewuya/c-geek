@@ -35,17 +35,22 @@
 *, *::before, *::after {
     box-sizing: inherit;
 }
+
+@font-face {
+    font-family: 'HZKPixel'; 
+    src: url('../fonts/hzk-pixel-16px.ttf') format('truetype'); /* 字体文件路径 */
+}
 html, body {
     margin: 0;
     width: 100%;
     color: hsl(var(--text-primary));
-    font-family: var(--font-main);
+    /*font-family: var(--font-main);*/
     background-color: hsl(var(--background));
     -webkit-font-smoothing: antialiased;
     scroll-behavior: smooth;
     box-sizing: border-box;
     background-color: #608a81;
-
+    font-family:"HZKPixel";
     
 }
 

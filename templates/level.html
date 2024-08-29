@@ -2,46 +2,316 @@
 <html>
     <head>
         <title>pixelart</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/level.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" href="../css/homepage.css">
+        <link rel="stylesheet" href="../css/back2.css">
+        <link rel="stylesheet" href="../css/prism.css">
     </head>
-
-    <body >
-        <div class="image level_1">
-            <a href="class_1.html">C语言简介</a>
-            <img id="character" src="../pictures/link.gif">
+    <nav id="navbar">
+        <ul class="navbar-items flexbox-col">
+          <li class="navbar-logo flexbox-left">
+            <a class="navbar-item-inner flexbox">
+              <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 1438.88 1819.54">
+                <polygon points="925.79 318.48 830.56 0 183.51 1384.12 510.41 1178.46 925.79 318.48"/>
+                <polygon points="1438.88 1663.28 1126.35 948.08 111.98 1586.26 0 1819.54 1020.91 1250.57 1123.78 1471.02 783.64 1663.28 1438.88 1663.28"/>
+              </svg>
+            </a>
+          </li>
+          <li class="navbar-item flexbox-left">
+            <a href="../templates/homepage.html" class="navbar-item-inner flexbox-left">
+              <div class="navbar-item-inner-icon-wrapper flexbox">
+                <ion-icon name="home-outline"></ion-icon>
+              </div>
+              <span class="link-text">Home</span>
+            </a>
+          </li>
+          <li class="navbar-item flexbox-left">
+            <a href="../templates/level.html"  class="navbar-item-inner flexbox-left">
+              <div class="navbar-item-inner-icon-wrapper flexbox">
+                <ion-icon name="study-outline"></ion-icon>
+              </div>
+              <span class="link-text">Study</span>
+            </a>
+          </li>
+          <li class="navbar-item flexbox-left">
+            <a href="../templates/team.html" class="navbar-item-inner flexbox-left">
+              <div class="navbar-item-inner-icon-wrapper flexbox">
+                <ion-icon name="people-outline"></ion-icon>
+              </div>
+              <span class="link-text">Team</span>
+            </a>
+          </li>
+          <li class="navbar-item flexbox-left">
+            <a href="../templates/menu.html" class="navbar-item-inner flexbox-left">
+              <div class="navbar-item-inner-icon-wrapper flexbox">
+                <ion-icon name="log-outline"></ion-icon>
+              </div>
+              <span class="link-text">Game</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!--教程-->
+      <div class="row" >
+        <div class="col-4" style="width: 10%;position: fixed;margin:0% 85%;width: 10em;">
+          <nav id="navbar-example3" class="h-100 flex-column align-items-stretch pe-4 border-end">
+            <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="#item-1" style="color: aqua;">Dev-C++</a>
+              <nav class="nav nav-pills flex-column">
+                <a class="nav-link ms-3 my-1" href="#item-1-1" style="color: aqua;">简介</a>
+                <a class="nav-link ms-3 my-1" href="#item-1-2" style="color: aqua;">调试</a>
+                <a class="nav-link ms-3 my-1" href="#item-1-3" style="color: aqua;">安装</a>
+              </nav>
+              <a class="nav-link" href="#item-2" style="color: aqua;">变量常量</a>
+                <nav class="nav nav-pills flex-column">
+                    <a class="nav-link ms-3 my-1" href="#item-2-1" style="color: aqua;">C 变量</a>
+                    <a class="nav-link ms-3 my-1" href="#item-2-2" style="color: aqua;">C 常量</a>
+                    
+                  </nav>
+              </a>
+              <a class="nav-link" href="#item-3" style="color: aqua;">Item 3</a>
+              <nav class="nav nav-pills flex-column">
+                <a class="nav-link ms-3 my-1" href="#item-3-1" style="color: aqua;">Item 3-1</a>
+                <a class="nav-link ms-3 my-1" href="#item-3-2" style="color: aqua;">Item 3-2</a>
+                
+              </nav>
+            </nav>
+          </nav>
         </div>
-
-        <div class="image level_1">
-            <a href="class_2.html">if 语句简介</a>
-            <img id="character" src="../pictures/link.gif">
+      
+        <div class="col-8" style="margin-left: 17%;">
+          <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
+            <div id="item-1">
+              <h4>Dev-C++</h4>
+              <p>Dev-C++ 是一个流行的免费C/C++集成开发环境（IDE），它提供了许多便利的编程工具，包括代码编辑、编译、运行和调试等。Dev-C++支持基本的逐行调试功能，这对于初学者和需要简单调试功能的开发者来说是非常有用的。</p>
+            </div>
+            <div id="item-1-1">
+              <h5>简介</h5>
+              <p><strong>C 环境设置</strong></p>
+              <p>  如果您想要设置 C 语言环境，您需要确保电脑上有以下两款可用的软件，文本编辑器和 C 编译器。</p>
+              <p><strong>文本编辑器</strong></p>
+              <p>通过编辑器创建的文件通常称为源文件，源文件包含程序源代码。
+                C 程序的源文件通常使用扩展名 .c。
+                在开始编程之前，请确保您有一个文本编辑器，且有足够的经验来编写一个计算机程序，然后把它保存在一个文件中，编译并执行它。
+                </p>
+                <p><strong>C 编译器</strong></p>
+                <p>写在源文件中的源代码是人类可读的源。它需要"编译"，转为机器语言，这样 CPU 可以按给定指令执行程序。
+                    C 语言编译器用于把源代码编译成最终的可执行程序。这里假设您已经对编程语言编译器有基本的了解了。
+                    最常用的免费可用的编译器是 GNU 的 C/C++ 编译器，如果您使用的是 HP 或 Solaris，则可以使用各自操作系统上的编译器。
+                    </p>
+            </div>
+            <div id="item-1-2">
+              <h5>调试</h5>
+              <p>以下是在Dev-C++中进行逐行调试的基本步骤：</p>
+              <p><strong>编写代码：</strong></p>
+              <p>首先，你需要在Dev-C++中编写你的C/C++代码。确保你的代码中有足够的调试信息，比如使用printf或std::cout来输出变量的值。</p>
+              <p><strong>设置断点：</strong></p>
+            <p>在Dev-C++中，你可以通过在代码编辑器的左边栏（通常是行号旁边）点击来设置断点。断点是一个标记，它告诉调试器在执行到这一点时暂停程序的执行。这样，你就可以检查程序的状态，比如变量的值、内存的内容等。</p>
+            <p><strong>编译程序：</strong></p>
+            <p>在调试之前，你需要确保你的程序已经成功编译。在Dev-C++中，你可以通过点击工具栏上的“编译”按钮或使用快捷键（通常是F9）来编译你的程序。</p>
+            <p><strong>开始调试</strong></p>
+            <p>编译成功后，你可以通过点击工具栏上的“调试”按钮或使用快捷键（通常是F5）来开始调试。程序会在你设置的第一个断点处暂停执行。
+                逐行调试：在调试模式下，你可以使用“单步执行”（Step Over）功能来逐行执行代码。这个功能允许你逐行查看代码的执行情况，并在每一步之后检查程序的状态。在Dev-C++中，你可以通过点击工具栏上的“单步执行”按钮或使用快捷键（通常是F7）来实现这一点。
+                检查变量和表达式：在调试过程中，你可以使用调试窗口（如“监视”窗口）来检查变量的值和表达式的计算结果。这有助于你理解程序的行为，并找出潜在的错误。
+                继续执行：如果你想要继续执行程序直到遇到下一个断点，你可以使用“继续执行”（Continue）功能。在Dev-C++中，你可以通过点击工具栏上的“继续执行”按钮或使用快捷键（通常是F8）来实现这一点。
+                停止调试：当你完成调试后，你可以通过点击工具栏上的“停止调试”按钮或使用快捷键（通常是Shift+F5）来停止调试。
+                </p>
         </div>
-
-        <div class="image level_1">
-            <a href="class_3.html">while 循环简介</a>
-            <img id="character" src="../pictures/link.gif">
+        <div id="item-1-3">
+            <h5>安装Dev-C++ </h5>
+            <p>官方下载:https://sourceforge.net/projects/ orwelldevcpp/，或用百度搜索Dev-C++5.11，推荐在腾讯软件中下载Dev-C++5.11安装包(.exe程序)。 
+                下载完成后会得到一个安装包(Dev-Cpp5.11 TDM-GCC4.9.2 Setup.exe)，利用该安装包安装，安装步骤如下: </p>
+               <p>(1) 双击安装包，加载安装程序(只需要几十秒)。</p>  
+                <p>(2) 开始安装。Dev-C++5.11支持多国语言，包括简体中文，但是要等到安装完成以后才能设置，在安装过程中不能使用简体中文，所以这里我们选择英文(English)。</p>
+                <p>(3) 单击【OK】完成言选择，进入Dev-C++5.11 许可协议对话框。</p> 
+                <p>(4) 单击【I Agree 】接受协议，进入选择组件对话框。 </p>
+                <p>(5) 建议保持默认设置，单击【Next】进入选择安装路径对话框，设置你希望的安装目录。</p> 
+                <p>(6) 单击【Install】按钮，进入等待安装对话框。 </p>
+                <p>(7) 待【Next】按钮激活后，单击【Next】按钮。在弹出的安装完成向导对话框中，单击【Finish】按钮安装完毕，并在桌面上生成快捷方式图标。接下来就可以对开发环境进行配置了。</p>
+               <img src="../pictures/l1.jpg" style="width:400px; height: 300px;"></image>
         </div>
-
-        <div class="image level_1">
-            <a href="class_4.html">do...while 循环简介</a>
-            <img id="character" src="../pictures/link.gif">
+            <div id="item-2">
+              <h4></h4>
+              <p></p>
+            </div>
+            <div id="item-2-1">
+              <h5>C 变量</h5>
+              <p>变量其实只不过是程序可操作的存储区的名称。C 中每个变量都有特定的类型，类型决定了变量存储的大小和布局，该范围内的值都可以存储在内存中，运算符可应用于变量上。
+                变量的名称可以由字母、数字和下划线字符组成。它必须以字母或下划线开头。大写字母和小写字母是不同的，因为 C 是大小写敏感的。基于前一章讲解的基本类型，有以下几种基本的变量类型：
+                </p>
+                <image src="../pictures/l2.png" style="width:400px; height: 300px;"></image>
+                <p>C 语言也允许定义各种其他类型的变量，比如枚举、指针、数组、结构、共用体等等，这将会在后续的章节中进行讲解，本章节我们先讲解基本变量类型。</p>
+            <p><strong>C 中的变量定义</strong></p>
+            <p>变量定义就是告诉编译器在何处创建变量的存储，以及如何创建变量的存储。变量定义指定一个数据类型，并包含了该类型的一个或多个变量的列表，如下所示：
+                type variable_list;
+            type 表示变量的数据类型，可以是整型、浮点型、字符型、指针等，也可以是用户自定义的对象。
+            variable_list 可以由一个或多个变量的名称组成，多个变量之间用逗号,分隔，变量由字母、数字和下划线组成，且以字母或下划线开头。
+            下面列出几个有效的声明：
+            </p>
+            <p>定义整型变量：
+                int age;
+            </p>
+            <p>以上代码中，age 被定义为一个整型变量。</p>
+            <p>定义浮点型变量：
+                float salary;            
+            </p>
+            <p>以上代码中，salary 被定义为一个浮点型变量。</p>
+            <p>定义字符型变量：
+                char grade;            
+            </p>
+            <p>以上代码中，grade 被定义为一个字符型变量。</p>
+            <p>定义指针变量：
+                int *ptr;            
+            </p>
+            <p>以上代码中，ptr 被定义为一个整型指针变量。</p>
+            <p>定义多个变量：
+                int    i, j, k;            
+            </p>
+            <p>int i, j, k; 声明并定义了变量 i、j 和 k，这指示编译器创建类型为 int 的名为 i、j、k 的变量。</p>
+            <p><strong>变量初始化</strong></p>
+            <P>在 C 语言中，变量的初始化是在定义变量的同时为其赋予一个初始值。变量的初始化可以在定义时进行，也可以在后续的代码中进行。
+                初始化器由一个等号，后跟一个常量表达式组成，如下所示：
+                    type variable_name = value;
+                其中，type 表示变量的数据类型，variable_name 是变量的名称，value 是变量的初始值。
+                需要注意的是，变量在使用之前应该被初始化。未初始化的变量的值是未定义的，可能包含任意的垃圾值。因此，为了避免不确定的行为和错误，建议在使用变量之前进行初始化。
+                </P>
+                <P><strong>变量不初始化</strong></P>
+                <p>在 C 语言中，如果变量没有显式初始化，那么它的默认值将取决于该变量的类型和其所在的作用域。
+                    对于全局变量和静态变量（在函数内部定义的静态变量和在函数外部定义的全局变量），它们的默认初始值为零。
+                    以下是不同类型的变量在没有显式初始化时的默认值：
+                    </p>
+                    <ul>
+                        <li>整型变量（int、short、long等）：默认值为0。</li>
+                        <li>浮点型变量（float、double等）：默认值为0.0。</li>
+                        <li>字符型变量（char）：默认值为'\0'，即空字符。</li>
+                        <li>指针变量：默认值为NULL，表示指针不指向任何有效的内存地址。</li>
+                        <li>数组、结构体、联合等复合类型的变量：它们的元素或成员将按照相应的规则进行默认初始化，这可能包括对元素递归应用默认规则。</li>
+                    </ul>
+                    <p>需要注意的是，局部变量（在函数内部定义的非静态变量）不会自动初始化为默认值，它们的初始值是未定义的（包含垃圾值）。因此，在使用局部变量之前，应该显式地为其赋予一个初始值。
+                        总结起来，C 语言中变量的默认值取决于其类型和作用域。全局变量和静态变量的默认值为 0，字符型变量的默认值为 \0，指针变量的默认值为 NULL，而局部变量没有默认值，其初始值是未定义的。
+                        </p>
+                        <p><strong>C 中的变量声明</strong></p>
+                        <p>变量声明向编译器保证变量以指定的类型和名称存在，这样编译器在不需要知道变量完整细节的情况下也能继续进一步的编译。变量声明只在编译时有它的意义，在程序连接时编译器需要实际的变量声明。
+                            变量的声明有两种情况
+                            </p>
+                            <p>•	1、一种是需要建立存储空间的。例如：int a 在声明的时候就已经建立了存储空间。</p>
+                            <p>•	2、另一种是不需要建立存储空间的，通过使用extern关键字声明变量名而不定义它。 例如：extern int a 其中变量 a 可以在别的文件中定义的。
+                                除非有 extern 关键字，否则都是变量的定义。
+                                extern int i; //声明，不是定义
+                                int i; //声明，也是定义
+                                </p>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="code-block">                                        <pre><code class="language-clike">
+                                            
+ 
+                                                    // 函数外定义变量 x 和 y
+                                                    int x;
+                                                    int y;
+                                                    int addtwonum()
+                                                    {
+                                                        // 函数内声明变量 x 和 y 为外部变量
+                                                        extern int x;
+                                                        extern int y;
+                                                        // 给外部变量（全局变量）x 和 y 赋值
+                                                        x = 1;
+                                                        y = 2;
+                                                        return x+y;
+                                                    }
+                                                     
+                                                    int main()
+                                                    {
+                                                        int result;
+                                                        // 调用函数 addtwonum
+                                                        result = addtwonum();
+                                                        
+                                                        printf("result 为: %d",result);
+                                                        return 0;
+                                                    }
+                                                    
+                                                </code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>当上面的代码被编译和执行时，它会产生下列结果：
+                                    result 为: 3
+                                    </p>
+            </div>
+            <div id="item-2-2">
+              <h5>C 常量</h5>
+              <p>常量是固定值，在程序执行期间不会改变。这些固定的值，又叫做字面量。
+                常量可以是任何的基本数据类型，比如整数常量、浮点常量、字符常量，或字符串字面值，也有枚举常量。
+                常量就像是常规的变量，只不过常量的值在定义后不能进行修改。
+                常量可以直接在代码中使用，也可以通过定义常量来使用。
+                整数常量
+                整数常量可以是十进制、八进制或十六进制的常量。前缀指定基数：0x 或 0X 表示十六进制，0 表示八进制，不带前缀则默认表示十进制。
+                整数常量也可以带一个后缀，后缀是 U 和 L 的组合，U 表示无符号整数（unsigned），L 表示长整数（long）。后缀可以是大写，也可以是小写，U 和 L 的顺序任意。
+                </p>
+                <p><strong>浮点常量</strong></p>
+                <P>浮点常量由整数部分、小数点、小数部分和指数部分组成。您可以使用小数形式或者指数形式来表示浮点常量。
+                    当使用小数形式表示时，必须包含整数部分、小数部分，或同时包含两者。当使用指数形式表示时， 必须包含小数点、指数，或同时包含两者。带符号的指数是用 e 或 E 引入的。
+                    </P>
+                    <p><strong>字符常量</strong></p>
+                    <p>字符常量是括在单引号中，例如，'x' 可以存储在 char 类型的简单变量中。
+                        字符常量可以是一个普通的字符（例如 'x'）、一个转义序列（例如 '\t'），或一个通用的字符（例如 '\u02C0'）。
+                        在 C 中，有一些特定的字符，当它们前面有反斜杠时，它们就具有特殊的含义，被用来表示如换行符（\n）或制表符（\t）等。下表列出了一些这样的转义序列码：
+                        </p>
+                        <image src="../pictures/l3.png" style="width:400px; height: 300px;"></image>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="code-block">                                        <pre><code class="language-clike">
+                                        int main()
+                                        {
+                                           printf("Hello World\n");
+                                         
+                                           return 0;
+                                        }
+                                        
+                                        </code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>当上面的代码被编译和执行时，它会产生下列结果：
+                            Hello   World
+                        字符常量的 ASCII 值可以通过强制类型转换转换为整数值。
+                        实例
+                        char myChar = 'a';
+                        int myAsciiValue = (int) myChar; // 将 myChar 转换为 ASCII 值 97
+                        </p>
+                        <p><strong>字符串常量</strong></p>
+                        <p>字符串字面值或常量是括在双引号 " " 中的。一个字符串包含类似于字符常量的字符：普通的字符、转义序列和通用的字符。
+                            您可以使用空格做分隔符，把一个很长的字符串常量进行分行。
+                            下面的实例显示了一些字符串常量。下面这三种形式所显示的字符串是相同的。
+                            "hello, dear"
+                            "hello, \
+                            dear"
+                            "hello, " "d" "ear"
+                            字符串常量在内存中以 null 终止符 \0 结尾。例如：
+                                char myString[] = "Hello, world!"; //系统对字符串常量自动加一个 '\0'
+                            </p>
+                    </div>
+            <div id="item-3">
+              <h4>Item 3</h4>
+              <p>...</p>
+            </div>
+            <div id="item-3-1">
+              <h5>Item 3-1</h5>
+              <p>...</p>
+            </div>
+            <div id="item-3-2">
+              <h5>Item 3-2</h5>
+              <p>...</p>
+            </div>
+          </div>
         </div>
-
-        <div class="image level_1">
-            <a href="class_5.html">for 循环</a>
-            <img id="character" src="../pictures/link.gif">
-        </div>
-        
-        <div class="image level_1">
-            <a href="class_6.html">break 语句</a>
-            <img id="character" src="../pictures/link.gif">
-        </div>
-    
-        <audio id="music-player"autoplay>
-            <source src="/audio/index.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-        
-        <script src="/js/level.js" defer></script>
+      </div>
+        <script src="../js/level.js" defer></script>
+        <script src="../js/bootstrap.js" defer></script>
+        <script src="../js/prism.js"></script>
     </body>
 </html>

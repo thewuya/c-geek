@@ -1,10 +1,13 @@
 /* 
 ** Layout, Text & Colors 
 */
-
+@font-face {
+  font-family: 'HZKPixel'; 
+  src: url('../fonts/hzk-pixel-16px.ttf') format('truetype'); /* 字体文件路径 */
+}
 body {
     font-size: 18px;
-    
+    font-family:"HZKPixel";
   }
   
   p {
@@ -55,7 +58,7 @@ body {
     position: relative;
     padding: 190px 0px 100px 10px;
     width: 90%;
-    color: #af9f09;
+    color: #0a8f94;
   }
 
   .cardtitle {
@@ -73,25 +76,33 @@ body {
   }
   
   .card-color-0 {
-    background-color: #EB5160;
+    background-color: #324247;
+    background-image: url(../pictures/t1.jpg);
   }
   
   .card-color-1 {
-    background-color: #8F3985;
+    background-color:#a3650f;
+    background-image: url(../pictures/t2.jpg);
   }
   
   .card-color-2 {
-    background-color: #8DAA91;
+    background-color: #EB5160;
+    background-image: url(../pictures/t3.jpg);
   }
   
   .card-color-3 {
-    background-color: #888DA7;
+    background-color: aquamarine;
+    background-image: url(../pictures/t4.jpg);
   }
-  
+
+  .card-color-4 {
+    background-color: #324247;
+    background-image: url(../pictures/t5.jpg);
+  }
   /* The cover (expanding background) */
   .cover {
     position: fixed;
-    background: #EB5160;
+    background: #ffffff;
     z-index: 100;
     transform-origin: 50% 50%;
   }
