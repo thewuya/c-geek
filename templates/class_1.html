@@ -1,77 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>Movement System</title>
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            touch-action: none; /* Disable default touch actions */
-        }
-        #player {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        .control {
-            position: fixed;
-            width: 100px;
-            height: 100px;
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            text-align: center;
-            line-height: 100px;
-            font-size: 24px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        #up { bottom: 120px; right: 50px; }
-        #right { bottom: 50px; right: 120px; }
-        #down { bottom: 50px; right: 50px; }
-        #left { bottom: 50px; right: 190px; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习C语言编程</title>
+    <link rel="stylesheet" href="../css/class.css">
+    <script src="../js/class.js"></script>
 </head>
 <body>
-    <img id="player" src="walk_up.gif" alt="Walking" width="100" height="100">
+
+    <div class="console-container">
+       
+        <div class="console-header">
+            <h1 class="title">学习C语言编程</h1>
+        </div>
+
+   
+        <div class="console-content">
+           
+            <div class="topic-header">
+                <div class="icon">
+                    
+                </div>
+                <div class="topic-name">C语言简介</div>
+            </div>
+
+        
+            <div class="topic-details">
+                <p>C是一种功能强大的通用编程语言。它速度快、可移植，且适用于所有平台。</p>
+                <p>本教程将带你从环境搭建到编写你的第一个C程序，逐步了解C编程的基础知识。</p>
+            </div>
+
+            
+            <div class="code-example">
+                <h2>示例：Hello World</h2>
+                <pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!");
+    return 0;
+}
+                </code></pre>
+                <p>这个简单的程序会在控制台输出"Hello, World!"，它通常是学习新编程语言时编写的第一个程序。</p>
+            </div>
+
+            
+        </div>
+        <button  class="button_pixel_effect"><a href="quiz_1.html">考核</a></button>
+    </div>
     
-    <div id="up" class="control">↑</div>
-    <div id="right" class="control">→</div>
-    <div id="down" class="control">↓</div>
-    <div id="left" class="control">←</div>
-    
-    <script>
-        const player = document.getElementById('player');
-        const stepSize = 10; // Number of pixels to move per control tap
-
-        function movePlayer(direction) {
-            const rect = player.getBoundingClientRect();
-            let top = rect.top;
-            let left = rect.left;
-
-            switch (direction) {
-                case 'up':
-                    player.src = 'walk_up.gif';
-                    player.style.top = (top - stepSize) + 'px';
-                    break;
-                case 'right':
-                    player.src = 'walk_right.gif';
-                    player.style.left = (left + stepSize) + 'px';
-                    break;
-                case 'down':
-                    player.src = 'walk_down.gif';
-                    player.style.top = (top + stepSize) + 'px';
-                    break;
-                case 'left':
-                    player.src = 'walk_left.gif';
-                    player.style.left = (left - stepSize) + 'px';
-                    break;
-            }
-        }
-
-        document.getElementById('up').addEventListener('touchstart', () => movePlayer('up'));
-        document.getElementById('right').addEventListener('touchstart', () => movePlayer('right'));
-        document.getElementById('down').addEventListener('touchstart', () => movePlayer('down'));
-        document.getElementById('left').addEventListener('touchstart', () => movePlayer('left'));
-    </script>
 </body>
 </html>

@@ -1,6 +1,12 @@
+@font-face {
+    font-family: 'pixel-hanzi';
+    src: url('../fonts/Uranus_Pixel_11Px.ttf'); 
+}
+
 body {
     background-color: #e3f6f5; 
-    font-family: 'VT323', monospace;
+    font-family: 'pixel-hanzi';
+
     color: #000;
     margin: 0;
     padding: 0;
