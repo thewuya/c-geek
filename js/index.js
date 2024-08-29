@@ -271,8 +271,8 @@ function loadProfile (){
 }
 
 function showRanking() {
-  if (!db){
-    alert('再来一次')
+  if (!db) {
+    alert('再来一次');
     return;
   }
 
@@ -283,20 +283,22 @@ function showRanking() {
   request.onsuccess = function(event) {
     const users = event.target.result;
 
-    users.sort((a,b) => {
-      if(a.level === b.level) {
+    users.sort((a, b) => {
+      if (a.level === b.level) {
         return b.experience - a.experience;
       }
       return b.level - a.level;
     });
 
-    const userList = document.getElementById('userList')
+    const userList = document.getElementById('userList');
     userList.innerHTML = '';
-    users.forEach(user => {
+
+    users.forEach((user, index) => {
       const listItem = document.createElement('li');
-      listItem.textContent = `username:${user.username} level:${user.level} experience:${ user.experience }`;
+      listItem.textContent = `${index + 1}. username: ${user.username} level: ${user.level} experience: ${user.experience}`;
+
       if (user.username === sessionStorage.getItem('username')) {
-        listItem.textContent += ' - 这是你'
+        listItem.textContent += ' - 这是你';
       } else {
         const addButton = document.createElement('button');
         addButton.textContent = '加友';
@@ -310,30 +312,28 @@ function showRanking() {
     });
   };
 
-  function addFriend(friendUsername){
+  function addFriend(friendUsername) {
     if (!db) {
-      alert ('再来');
+      alert('再来');
       return;
     }
 
     const currentUsername = sessionStorage.getItem('username');
 
-    if (friendUsername === currentUsername){
+    if (friendUsername === currentUsername) {
       alert('不可以加自己');
       return;
     }
 
     const transaction = db.transaction(['friends'], 'readwrite');
     const objectStore = transaction.objectStore('friends');
-    
+
     const checkRequest = objectStore.get([currentUsername, friendUsername]);
 
     checkRequest.onsuccess = function () {
-      if (checkRequest.result)
-      {
+      if (checkRequest.result) {
         alert('已经是好友了');
-      }
-      else {
+      } else {
         const friendRelation = {
           username: currentUsername,
           friendUsername: friendUsername
@@ -341,22 +341,20 @@ function showRanking() {
         const addRequest = objectStore.add(friendRelation);
         addRequest.onsuccess = function () {
           alert('加了');
-        }
-  
+        };
+
         addRequest.onerror = function () {
           alert('失败了' + addRequest.error);
         }
       }
-      
-      
     };
 
     checkRequest.onerror = function () {
-      alert('失败了' + checkRequest.error)
+      alert('失败了' + checkRequest.error);
     };
-
   }
 }
+
 
 function logInConvenient () {
   const username = document.getElementById("username");
