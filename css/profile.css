@@ -5,8 +5,8 @@
 
 /* General Styles */
 body {
-    background: #2e3a23; /* Dark green background for a forest feel */
-    color: #d8e1d3; /* Light greenish-white text for contrast */
+    background: #2B2B2B; /* Dark gray background for a cohesive look */
+    color: #E0E0E0; /* Light gray text for contrast */
     font-family: 'pixel-hanzi', sans-serif;
     cursor: url("../pictures/cursor.png"), auto; 
 }
@@ -15,14 +15,14 @@ body {
 .profile-img {
     width: 150px;
     height: 150px;
-    border: 5px solid #a1b58c; /* Light olive border for profile picture */
+    border: 5px solid #A0522D; /* Saddle brown border to match the message page */
     border-radius: 50%; /* Circular profile picture */
 }
 
 /* Profile Information Box */
 .profile-info {
-    background: #4f5d23; /* Forest green background for profile info */
-    border: 2px solid #6b7b4a; /* Olive border to match forest theme */
+    background: #3D3D3D; /* Slightly lighter dark gray for profile info */
+    border: 2px solid #A0522D; /* Saddle brown border to match the profile image */
     box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Slight shadow for depth */
 }
 
@@ -32,9 +32,23 @@ body {
 }
 
 .list-group-item {
-    background: #3b4c2a; /* Dark green for list items */
-    border: 1px solid #5b6b3a; /* Slightly lighter green border for retro look */
-    color: #d8e1d3; /* Light greenish-white text for readability */
+    background: #4A4A4A; /* Dark gray for list items */
+    border: 1px solid #A0522D; /* Saddle brown border for consistency */
+    color: #E0E0E0; /* Light gray text for readability */
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #3D3D3D; /* Dark gray track background */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #A0522D; /* Saddle brown thumb */
+    border-radius: 10px; /* Rounded scrollbar thumb */
 }
 
 /* Responsive Design */

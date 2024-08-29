@@ -1,86 +1,137 @@
-/* General styles */
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@font-face {
+    font-family: 'pixel-hanzi';
+    src: url('../fonts/hzk-pixel-16px.ttf');
+}
 
 body {
-    font-family: 'Press Start 2P', cursive;
-    background: url('../images/epic-background.png') no-repeat center center fixed;
-    background-size: cover;
-    color: #fff;
-    margin: 0;
-    padding: 0;
+    background-color: #f4f1e3; /* Dark background color similar to message page */
+    font-family: 'pixel-hanzi', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
+    color: #E0E0E0; /* Light gray text color */
 }
 
 .container {
-    text-align: center;
-    background: rgba(0, 0, 0, 0.8);
-    border: 4px solid #ffcc00;
-    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+    background-color: #f4f1e3; /* Dark gray background */
+    border: 4px solid #A0522D; /* Saddle brown border for consistency */
+    box-shadow: 0 0 15px #A0522D; /* Glow effect */
     padding: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    border-radius: 8px;
 }
 
-h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
-    color: #ffcc00;
-    text-shadow: 2px 2px 5px #000;
-}
-
-h2 {
-    font-size: 1.5em;
+.title {
+    font-size: 28px;
     margin-bottom: 20px;
-    color: #ffcc00;
-    text-shadow: 1px 1px 3px #000;
+    color: #D2691E; /* Chocolate color for title */
+    text-shadow: 2px 2px #3E3E3E; /* Subtle 3D effect with a darker gray */
 }
 
-/* Ranking list styles */
-#rankingList {
-    list-style-type: none;
+.user-list {
+    list-style: none;
     padding: 0;
     margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    border-top: 2px solid #A0522D; /* Saddle brown border */
+    border-bottom: 2px solid #A0522D; /* Saddle brown border */
 }
 
-#rankingList li {
-    background: rgba(0, 0, 0, 0.7);
-    border: 3px solid #ffcc00;
-    border-radius: 10px;
-    margin: 10px auto;
-    padding: 15px;
-    width: 90%;
-    max-width: 600px;
-    font-size: 1.2em;
+/* Custom scrollbar */
+.user-list::-webkit-scrollbar {
+    width: 12px;
+}
+
+.user-list::-webkit-scrollbar-track {
+    background: #2C2C2C; /* Track color matching body background */
+    border-left: 2px solid #A0522D; /* Saddle brown border */
+}
+
+.user-list::-webkit-scrollbar-thumb {
+    background-color: #A0522D; /* Thumb color */
+    border-radius: 6px;
+    border: 2px solid #2C2C2C; /* Border around thumb */
+}
+
+.user-list li {
+    font-size: 18px;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #6A4F28; /* Dark brown background */
+    border: 2px solid #A0522D; /* Saddle brown border */
+    color: #E0E0E0; /* Light gray text color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: relative;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
 }
 
-#rankingList li button {
-    background-color: #ffcc00;
-    border: 2px solid #000;
-    border-radius: 5px;
-    color: #000;
+.user-list li:hover {
+    background-color: #7F5F2A; /* Slightly lighter brown on hover */
+    border-color: #D2691E; /* Chocolate color on hover */
     cursor: pointer;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 1em;
-    margin-left: 10px;
+}
+
+.user-list button {
+    background-color: #D2691E; /* Chocolate color for button */
+    color: #E0E0E0;
+    border: none;
     padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: 'pixel-hanzi', sans-serif;
+    border-radius: 4px;
     transition: background-color 0.3s;
 }
 
-#rankingList li button:hover {
-    background-color: #e0b800;
+.user-list button:hover {
+    background-color: #2C2C2C; /* Dark background on hover */
+    color: #D2691E; /* Chocolate color on hover */
+    border: 2px solid #D2691E; /* Border around button */
 }
 
-/* Responsive design */
-@media (max-width: 600px) {
-    #rankingList li {
-        font-size: 1em;
+.user-list li::after {
+    content: '>';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #A0522D; /* Saddle brown color */
+    font-size: 16px;
+    display: none; /* Hidden by default */
+}
+
+.user-list li:hover::after {
+    display: block; /* Show on hover */
+}
+
+/* Animation for glowing effect */
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px #A0522D;
+    }
+    to {
+        box-shadow: 0 0 20px #A0522D;
+    }
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 480px) {
+    .container {
+        width: 90%;
+    }
+    
+    .title {
+        font-size: 24px;
     }
 
-    #rankingList li button {
-        font-size: 0.8em;
+    .user-list li {
+        font-size: 16px;
     }
 }
