@@ -364,8 +364,8 @@ function logInConvenient () {
   password.value = sessionStorage.getItem("log_password");
 }
 
-function handleMessageForm (event) {
-  event.preventDefault()
+function handleMessageForm(event) {
+  event.preventDefault();
   if (!db) {
     alert('try again');
     return;
@@ -376,27 +376,27 @@ function handleMessageForm (event) {
   const transaction = db.transaction(['messages'], 'readwrite');
   const messageStore = transaction.objectStore('messages');
 
-  const messages  = {
+  const messages = {
     sender: sessionStorage.getItem('username'),
-    receiver : receiver,
+    receiver: receiver,
     messageText: message
-  }
+  };
 
   const addRequest = messageStore.add(messages);
   addRequest.onsuccess = function() {
     alert("message sent");
     document.getElementById('message').value = '';
-  }
+    loadMessage(); // Reload messages after sending
+  };
 
   addRequest.onerror = function() {
     alert("message");
-    
-  }
+  };
 }
 
 function loadMessage() {
-  if(!db) {
-    console.error('你再来一次')
+  if (!db) {
+    console.error('你再来一次');
     return;
   }
 
@@ -406,27 +406,38 @@ function loadMessage() {
   const receiverIndex = messageStore.index('receiver');
   const request = receiverIndex.getAll(receiver);
 
-  request.onsuccess = function (event) {
-    const message = event.target.result;
+  request.onsuccess = function(event) {
+    const messages = event.target.result;
     const messageList = document.getElementById("messageList");
     messageList.innerHTML = '';
 
-    if (message.length > 0) {
-      message.forEach(message => {
-        const messageElement = document.createElement('p');
-        messageElement.textContent = `From: ${ message.sender} , Message: ${ message.messageText}`;
+    if (messages.length > 0) {
+      messages.forEach(message => {
+        const messageElement = document.createElement('div');
+        messageElement.className = 'message';
+
+        const messageContent = document.createElement('p');
+        messageContent.textContent = `From: ${message.sender} , Message: ${message.messageText}`;
+
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'delete-button';
+        deleteButton.textContent = 'Delete';
+        deleteButton.onclick = function() {
+          deleteMessage(message.id); // Use the message ID to delete the message
+        };
+
+        messageElement.appendChild(messageContent);
+        messageElement.appendChild(deleteButton);
         messageList.appendChild(messageElement);
       });
-    }
-    else
-    {
+    } else {
       messageList.textContent = '你没有消息';
     }
   };
 
-  request.onerror = function () {
-    console.error('消息失败了： ',request.error)
-  }
+  request.onerror = function() {
+    console.error('消息失败了：', request.error);
+  };
 
   const currentUser = sessionStorage.getItem('username');
   const friendTransaction = db.transaction(['friends'], 'readonly');
@@ -434,10 +445,10 @@ function loadMessage() {
   const friendIndex = friendStore.index('username');
   const friendRequest = friendIndex.getAll(currentUser);
 
-  friendRequest.onsuccess = function (event) {
+  friendRequest.onsuccess = function(event) {
     const friends = event.target.result;
     const friendList = document.getElementById('friendList');
-    friendList.innerHTML = '<option value="">Select a friend</option>'; 
+    friendList.innerHTML = '<option value="">Select a friend</option>';
 
     if (friends.length > 0) {
       friends.forEach(friendRelation => {
@@ -449,12 +460,30 @@ function loadMessage() {
     }
   };
 
-  friendRequest.onerror = function () {
+  friendRequest.onerror = function() {
     console.error('Error loading friends:', friendRequest.error);
   };
-
 }
 
+function deleteMessage(messageId) {
+  if (!db) {
+    alert('Database not available');
+    return;
+  }
+
+  const transaction = db.transaction(['messages'], 'readwrite');
+  const messageStore = transaction.objectStore('messages');
+  const deleteRequest = messageStore.delete(messageId);
+
+  deleteRequest.onsuccess = function() {
+    alert('Message deleted');
+    loadMessage(); // Reload messages after deletion
+  };
+
+  deleteRequest.onerror = function() {
+    alert('Failed to delete message');
+  };
+}
 function handleLogout() {
   sessionStorage.clear();
   window.location.href = 'log_in.html'; 

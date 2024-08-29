@@ -91,6 +91,7 @@ input[type="text"] {
 }
 
 .send-button {
+    font-family: 'pixel-hanzi';
     font-size: 16px;
     padding: 5px 10px;
     background-color: #705335;
@@ -117,4 +118,27 @@ input[type="text"] {
     input[type="text"] {
         width: 100%;
     }
+}
+
+.message {
+    font-family: 'pixel-hanzi';
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid #705335;
+}
+
+.delete-button {
+    font-family: 'pixel-hanzi';
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 3px 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: #e60000;
 }
