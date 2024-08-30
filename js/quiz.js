@@ -12,7 +12,7 @@ request.onsuccess = function(event) {
             answer: "6"
           },
           { 
-            question: "下述关于循环体的描述中，（C）是错误的。",
+            question: "下述关于循环体的描述中，是错误的。",
             options: ["循环体中可以出现break语句和continue语句", "循环体中还可以出现循环语句", "循环体中不能出现goto语句", "循环体中可以出现开关语句"],
             answer: "循环体中不能出现goto语句"
           },
@@ -183,104 +183,153 @@ request.onsuccess = function(event) {
 };
 
 function quizLoader(quiz_name, questions) {
-    if (!db) {
-      console.error('Por favor, inténtalo de nuevo.');
-      return;
+  if (!db) {
+    console.error('Database not initialized. Please try again.');
+    return;
+  }
+
+  const quizContainer = document.getElementById('quizContainer');
+  const submitButton = document.getElementById('submitQuiz');
+
+  function displayQuestions() {
+    if (!checkUserLoggedIn()) {
+      return; // If not logged in, stop execution
     }
-  
-    
-  
-    const quizContainer = document.getElementById('quizContainer');
-    const submitButton = document.getElementById('submitQuiz');
-  
-    function displayQuestions() {
-      if (!checkUserLoggedIn()) {
-        return; // If not logged in, stop execution
+    quizContainer.innerHTML = '';
+
+    questions.forEach((q, index) => {
+      const questionDiv = document.createElement('div');
+      questionDiv.classList.add('question');
+      questionDiv.innerHTML = `<p>${q.question}</p>`;
+      q.options.forEach(option => {
+        questionDiv.innerHTML += `<input type="radio" name="q${index}" value="${option}"> ${option}<br>`;
+      });
+
+      quizContainer.appendChild(questionDiv);
+    });
+  }
+
+  function allQuestionsAnswered() {
+    const unansweredQuestions = [];
+    questions.forEach((q, index) => {
+      const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+      if (!selectedOption) {
+        unansweredQuestions.push(index);
       }
-      quizContainer.innerHTML = ''; 
-  
-      questions.forEach((q, index) => {
-        const questionDiv = document.createElement('div');
-        questionDiv.innerHTML = `<p>${q.question}</p>`;
-        q.options.forEach(option => {
-          questionDiv.innerHTML += `<input type="radio" name="q${index}" value="${option}"> ${option}<br>`;
-        });
-        quizContainer.appendChild(questionDiv);
+    });
+    return unansweredQuestions;
+  }
+
+  function showUnansweredQuestions() {
+    const unansweredQuestions = allQuestionsAnswered();
+    if (unansweredQuestions.length > 0) {
+      alert(`请回答所有问题。以下问题未回答：${unansweredQuestions.map(index => index + 1).join(', ')}`);
+
+      document.querySelectorAll('.question').forEach((questionDiv, index) => {
+        // Remove any previous "not answered" message
+        const existingLabels = questionDiv.querySelectorAll('span');
+        existingLabels.forEach(label => label.remove());
+
+        if (unansweredQuestions.includes(index)) {
+          const notAnsweredLabel = document.createElement('span');
+          notAnsweredLabel.textContent = ' 你没做过';
+          notAnsweredLabel.style.color = 'red';
+          notAnsweredLabel.style.fontWeight = 'bold';
+          questionDiv.appendChild(notAnsweredLabel);
+        }
       });
     }
-  
-    submitButton.onclick = function() {
-        let score = 0;
-        let totalQuestions = questions.length;
-
-        questions.forEach((q, index) => {
-            const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
-            if (selectedOption && selectedOption.value === q.answer) {
-                score++;
-            }
-        });
-    
-        const username = sessionStorage.getItem('username');
-    
-        const transaction = db.transaction(['users'], 'readwrite');
-        const objectStore = transaction.objectStore('users');
-        const request = objectStore.get(username);
-    
-        request.onsuccess = function(event) {
-            const user = request.result;
-    
-
-            if (!user.quizzes) user.quizzes = {}; 
-    
-
-            if (user.quizzes[quiz_name] === false) {
-                user.experience += score * 10;
-                user.quizzes[quiz_name] = true;
-    
-                const updateRequest = objectStore.put(user);
-    
-                updateRequest.onsuccess = function() {
-                    alert(`你已经正确回答了 ${score} 道题，共 ${totalQuestions} 道题！你获得了 ${score * 10} 点经验值。`);
-                };
-    
-                updateRequest.onerror = function() {
-                    console.error('更新失败: ', updateRequest.error);
-                };
-            } else {
-                alert('你已经完成过这个测验了，经验值无法再次更新。');
-            }
-    
-
-            if (score >= 6) {
-                const nextLevelElement = document.getElementById('level');
-                const nextLevel = nextLevelElement.textContent.trim();
-                
-            
-                if (user.levelFollower && !user.levelFollower[nextLevel]) {
-                    user.levelFollower[nextLevel] = true; 
-                    user.lessonCompleted = parseInt(user.lessonCompleted) + 1;
-                    const updateRequest = objectStore.put(user);
-                    updateRequest.onsuccess = function() {
-                        alert(`恭喜！你已解锁下一等级 ${nextLevel}!`);
-                    };
-    
-                    updateRequest.onerror = function() {
-                        console.error('解锁下一等级失败: ', updateRequest.error);
-                    };
-                }
-            } else {
-                alert(`You did not pass. Your score is ${score}. Try again.`);
-            }
-        };
-    
-        request.onerror = function() {
-            console.error('加载用户数据失败: ', request.error);
-        };
-    };
-    
-  
-    displayQuestions();
   }
+
+  submitButton.onclick = function() {
+    showUnansweredQuestions();
+
+    // Ensure that all questions are answered before proceeding
+    const unansweredQuestions = allQuestionsAnswered();
+    if (unansweredQuestions.length > 0) {
+      return; // Stop further execution if there are unanswered questions
+    }
+
+    let score = 0;
+    let totalQuestions = questions.length;
+
+    questions.forEach((q, index) => {
+      const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+      if (selectedOption && selectedOption.value === q.answer) {
+        score++;
+      }
+    });
+
+    const username = sessionStorage.getItem('username');
+
+    const transaction = db.transaction(['users'], 'readwrite');
+    const objectStore = transaction.objectStore('users');
+    const request = objectStore.get(username);
+
+    request.onsuccess = function(event) {
+      const user = request.result;
+
+      if (!user.quizzes) user.quizzes = {};
+
+      if (user.quizzes[quiz_name] === false) {
+        user.experience += score * 10;
+        user.quizzes[quiz_name] = true;
+
+        const updateRequest = objectStore.put(user);
+
+        updateRequest.onsuccess = function() {
+          alert(`你已经正确回答了 ${score} 道题，共 ${totalQuestions} 道题！你获得了 ${score * 10} 点经验值。`);
+        };
+
+        updateRequest.onerror = function() {
+          console.error('更新失败: ', updateRequest.error);
+        };
+      } else {
+        alert('你已经完成过这个测验了，经验值无法再次更新。');
+      }
+
+      if (score >= 6) {
+        const nextLevelElement = document.getElementById('level');
+        const nextLevel = nextLevelElement.textContent.trim();
+
+        if (user.levelFollower && !user.levelFollower[nextLevel]) {
+          user.levelFollower[nextLevel] = true;
+          user.lessonCompleted = parseInt(user.lessonCompleted) + 1;
+          const updateRequest = objectStore.put(user);
+          updateRequest.onsuccess = function() {
+            alert(`恭喜！你已解锁下一等级 ${nextLevel}!`);
+            document.getElementById("score").innerHTML = `score ${ score }/10`;
+          };
+
+          updateRequest.onerror = function() {
+            console.error('解锁下一等级失败: ', updateRequest.error);
+          };
+        }
+      } else {
+        alert(`You did not pass. Your score is ${score}. Try again.`);
+        document.getElementById("score").innerHTML = `score ${ score }/10`;
+      }
+    };
+
+    request.onerror = function() {
+      console.error('加载用户数据失败: ', request.error);
+    };
+  };
+
+  displayQuestions();
+}
+
+
+function checkUserLoggedIn() {
+  const username = sessionStorage.getItem('username');
+  if (!username) {
+      alert('请先登录！'); // Prompt user to log in
+      window.location.href = 'login.html'; // Redirect to login page
+      return false;
+  }
+  return true;
+}
+
 
   function checkUserLoggedIn() {
     const username = sessionStorage.getItem('username');

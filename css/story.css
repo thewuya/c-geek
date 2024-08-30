@@ -1,9 +1,8 @@
 @font-face {
     font-family: 'pixel-hanzi';
-    src: url('../fonts/hzk-pixel-16px.ttf'); 
+    src: url('../fonts/hzk-pixel-12px.ttf'); 
 }
 
-/* Body with a parchment-like background */
 body {
     font-family: 'pixel-hanzi', sans-serif;
     cursor: url("../pictures/cursor.png"), auto; 
@@ -14,27 +13,26 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-image: url('parchment_texture.jpg'); /* Parchment texture background */
+    background-image: url('parchment_texture.jpg');
     background-size: cover;
     background-repeat: repeat;
 }
 
-/* Wrapper for the scroll effect */
 .scroll-wrapper {
     position: relative;
     width: 90%;
     max-width: 600px;
 }
 
-/* Top decoration of the scroll */
+
 .scroll-top,
 .scroll-bottom {
-    background-color: #b07d62; /* Aged brown color for the scroll edges */
+    background-color: #b07d62; 
     height: 30px;
     position: relative;
 }
 
-/* Curl effect for top and bottom of the scroll */
+
 .scroll-curl {
     width: 100%;
     height: 30px;
@@ -47,9 +45,9 @@ body {
     top: -15px;
 }
 
-/* Main container styled like a parchment scroll */
+
 .scroll-container {
-    background-color: #f5deb3; /* Light wheat color for scroll body */
+    background-color: #f5deb3; 
     border: 2px solid #8b4513; /* Dark brown border */
     padding: 20px;
     text-align: center;
